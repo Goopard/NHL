@@ -60,7 +60,7 @@ def get_game_stats(game_id):
 
     game_home_stats.update(
         {
-            'id': away_id,
+            'id': home_id,
             'game_id': game_id,
             'away': False,
             '1_period_our_goals': periods[0][0],
