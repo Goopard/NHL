@@ -20,12 +20,13 @@ def get_team_stats(team_id):
     return requests.get(request)
 
 
-def get_teams():
-    """Downloads the list of teams.
+def get_teams_df():
+    """Downloads the list of teams and returns them as a DataFrame.
 
-    :return: list.
+    :return: pandas.DataFrame.
     """
-    teams = (requests.get('https://statsapi.web.nhl.com/api/v1/teams').json())['teams']
+    raw_teams = (requests.get('https://statsapi.web.nhl.com/api/v1/teams').json())['teams']
+    teams = pd.DataFrame({'id': [team['id'] for team in raw_teams], 'name': [team['name'] for team in raw_teams]})
     return teams
 
 
